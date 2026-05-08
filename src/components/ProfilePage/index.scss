@@ -283,14 +283,22 @@ $clay: #b9774e;
 
 .person-cutout,
 .dog-cutout {
+  animation:
+    collageCharacterJump 1.85s ease-out both,
+    collageCharacterFade 1.85s linear both;
   filter: drop-shadow(0.45rem 0 white) drop-shadow(-0.45rem 0 white)
     drop-shadow(0 0.45rem white) drop-shadow(0 -0.45rem white);
+  opacity: 0;
+  will-change: opacity, transform;
 }
 
 .person-cutout {
+  --reveal-transform: translateX(-50%) rotate(-3deg);
+
+  animation-delay: 0.16s;
   left: 50%;
   top: -10%;
-  transform: translateX(-50%) rotate(-3deg);
+  transform: var(--reveal-transform);
   width: clamp(80rem, 24vw, 48rem);
   z-index: 4;
 
@@ -301,9 +309,12 @@ $clay: #b9774e;
 }
 
 .roki {
+  --reveal-transform: rotate(-3deg);
+
+  animation-delay: 0.54s;
   bottom: -10%;
   left: 4%;
-  transform: rotate(-3deg);
+  transform: var(--reveal-transform);
   width: clamp(18rem, 22vw, 40rem);
   z-index: 5;
 
@@ -314,9 +325,12 @@ $clay: #b9774e;
 }
 
 .pulga {
+  --reveal-transform: rotate(4deg);
+
+  animation-delay: 0.92s;
   bottom: -25%;
   right: 14%;
-  transform: rotate(4deg);
+  transform: var(--reveal-transform);
   width: clamp(17rem, 20vw, 36rem);
   z-index: 5;
 
@@ -329,6 +343,50 @@ $clay: #b9774e;
 
 
 
+@keyframes collageCharacterJump {
+  0% {
+    transform: translateY(16rem) scale(0.92) var(--reveal-transform);
+  }
+
+  42% {
+    transform: translateY(-3.2rem) scale(1.05) var(--reveal-transform);
+  }
+
+  60% {
+    transform: translateY(1.2rem) scale(0.98) var(--reveal-transform);
+  }
+
+  78% {
+    transform: translateY(-0.7rem) scale(1.01) var(--reveal-transform);
+  }
+
+  100% {
+    transform: var(--reveal-transform);
+  }
+}
+
+@keyframes collageCharacterFade {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.18;
+  }
+
+  50% {
+    opacity: 0.42;
+  }
+
+  75% {
+    opacity: 0.72;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes mascotSway {
   0%,
   100% {
@@ -337,6 +395,16 @@ $clay: #b9774e;
 
   50% {
     transform: rotate(1.5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .person-cutout,
+  .dog-cutout {
+    animation-duration: 1.85s;
+    animation-name: collageCharacterFade;
+    animation-timing-function: linear;
+    transform: var(--reveal-transform);
   }
 }
 
