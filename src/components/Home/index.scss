@@ -1,85 +1,89 @@
 @import "../../App.scss";
 
 .monke-wrapper {
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  top: -100px;
-  left: 100px;
+  align-self: baseline;
+  cursor: pointer;
+  display: inline-block;
+  flex: 0 0 0.56em;
+  height: 1em;
+  margin-inline: -0.03em 0.02em;
+  outline: none;
+  position: relative;
+  transform: translateY(0.08em);
+  width: 0.56em;
 
-  > img:first-of-type {
-    width: 200px;
-    animation: monkeShake 2s linear;
-    animation-direction: reverse;
+  img {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .monke-art {
+    left: -0.34em;
     position: absolute;
-    top: 30px;
-    left: -20px;
+    top: -0.58em;
+    width: 1.28em;
+    z-index: 2;
+
+    &.animate {
+      animation: monkeShake 2s linear reverse;
+    }
   }
 
-  > img:last-of-type {
+  .banana-art {
+    bottom: 0;
+    height: 0.95em;
+    left: -0.02em;
+    object-fit: contain;
     position: absolute;
-    top: 130px;
-    width: 80px;
-    transform: rotate(-25deg);
-    animation: bananaShake 2s linear;
-  }
+    transform: rotate(-18deg);
+    transform-origin: 50% 15%;
+    width: auto;
+    z-index: 1;
 
-  @media (max-width: 992px) {
-    left: 75px;
-    top: -100px;
-
-    > img:first-of-type {
-      width: 180px;
-      top: 30px;
-    }
-
-    > img:last-of-type {
-      width: 60px;
-      top: 120px;
+    &.animate {
+      animation: bananaShake 2s linear;
     }
   }
 
-  @media (max-width: 768px) {
-    left: 70px;
-    top: -80px;
-
-    > img:first-of-type {
-      width: 140px;
-      top: 35px;
-      left: -10px;
-    }
-
-    > img:last-of-type {
-      width: 50px;
-      top: 100px;
-    }
+  .click-label {
+    color: white;
+    font-family: "Cheese", sans-serif;
+    font-size: clamp(0.8rem, 0.14em, 1.4rem);
+    left: 0.3em;
+    line-height: 1;
+    position: absolute;
+    top: -0.32em;
+    transform: rotate(-27deg);
+    white-space: nowrap;
+    z-index: 3;
   }
 
   &:hover {
-    cursor: pointer;
+    .monke-art {
+      transform: rotate(-4deg);
+    }
+  }
+
+  &:focus-visible {
+    filter: drop-shadow(0 0 0.45rem rgba(255, 255, 255, 0.85));
   }
 }
 
-h2 {
-  margin-left: 100px;
-  font-size: calc(11px + 0.3vw);
-  transform: rotate(-30deg) translateY(-100px);
-  z-index: 10;
-  position: absolute;
-  top: 120px;
-  left: -50px;
-  @media (max-width: 992px) {
-    transform: rotate(-30deg) translateY(-80px);
-  }
+.intro-heading,
+.name-heading,
+.role-heading {
+  width: max-content;
+  max-width: 100%;
+}
 
-  @media (max-width: 768px) {
-    transform: rotate(-30deg) translateY(-60px);
-  }
+.name-heading {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: nowrap;
+}
 
-  @media (max-width: 576px) {
-    transform: rotate(-30deg) translateY(-40px);
-    font-size: calc(10px + 0.3vw);
-  }
+.role-heading {
+  margin-top: clamp(0.6rem, 1vw, 1.4rem);
 }
 
 .flat-button {

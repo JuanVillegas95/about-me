@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import React, { useEffect, useRef, useState } from "react"
 import "./index.scss"
 import homeMonke from "../../assets/images/layout-monke1.png"
@@ -7,14 +6,8 @@ import { AnimatedLetters } from "../AnimatedLetters"
 import { Logo } from "./Logo"
 
 const hiText = ["H", "i", "!"]
+const nameIntroText = ["I", "’", "m", "\u00A0"]
 const nameText = [
-  "I",
-  "’",
-  "m",
-  "\u00A0",
-  "\u00A0",
-  "\u00A0",
-  "\u00A0",
   "u",
   "a",
   "n",
@@ -62,6 +55,13 @@ export const Home = () => {
     }, 4000)
   }
 
+  const handleMonkeKeyDown = (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault()
+      handleIsMonkeAnimate()
+    }
+  }
+
   useEffect(() => {
     setTimeout(() => {
       setLetterClass("text-animate-hover")
@@ -69,39 +69,47 @@ export const Home = () => {
   }, [])
 
   return (
-    <div className="home-page">
+    <section className="home-page hero-section">
       <div className="text-zone">
-        <div>
-          <h1 style={{ position: "relative" }}>
-            <AnimatedLetters text={hiText} letterClass={letterClass} idx={12} />
-            <div className="monke-wrapper">
-              <h2>Click Me!</h2>
-              <img
-                onClick={handleIsMonkeAnimate}
-                className={`${isMonkeAnimate ? "animate" : ""}`}
-                src={homeMonke}
-                alt="monke"
-              />
-              <img
-                onClick={handleIsMonkeAnimate}
-                src={bananaJ}
-                alt="monke"
-                className={`${isMonkeAnimate ? "animate" : ""}`}
-              />
-            </div>
-          </h1>
-        </div>
-
-        <h1>
-          <AnimatedLetters text={nameText} letterClass={letterClass} idx={15} />
+        <h1 className="intro-heading">
+          <AnimatedLetters text={hiText} letterClass={letterClass} idx={12} />
         </h1>
-        <h1>
+
+        <h1 className="name-heading">
+          <AnimatedLetters
+            text={nameIntroText}
+            letterClass={letterClass}
+            idx={15}
+          />
+          <span
+            className="monke-wrapper"
+            role="button"
+            tabIndex={0}
+            onClick={handleIsMonkeAnimate}
+            onKeyDown={handleMonkeKeyDown}
+            aria-label="Animate monkey"
+          >
+            <span className="click-label">Click Me!</span>
+            <img
+              className={`monke-art ${isMonkeAnimate ? "animate" : ""}`}
+              src={homeMonke}
+              alt=""
+            />
+            <img
+              src={bananaJ}
+              alt="J"
+              className={`banana-art ${isMonkeAnimate ? "animate" : ""}`}
+            />
+          </span>
+          <AnimatedLetters text={nameText} letterClass={letterClass} idx={20} />
+        </h1>
+        <h1 className="role-heading">
           <AnimatedLetters text={roleText} letterClass={letterClass} idx={34} />
         </h1>
       </div>
       <div className="visual-zone">
         <Logo />
       </div>
-    </div>
+    </section>
   )
 }

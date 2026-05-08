@@ -30,26 +30,27 @@
 // Keep your existing .skills-cont and .skill styles
 
 .skills-cont {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  width: 100%;
-  right: 4%;
-  justify-content: center;
   align-items: center;
+  display: grid;
+  gap: clamp(1.2rem, 2vw, 2rem);
+  grid-template-columns: repeat(auto-fit, minmax(clamp(5.6rem, 7vw, 7.6rem), 1fr));
+  justify-items: center;
+  max-width: 58rem;
+  width: 100%;
 }
 
 .skill {
+  aspect-ratio: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 76px;
-  height: 76px;
+  width: clamp(5.6rem, 7vw, 7.6rem);
   border-radius: 50%;
   background-color: white;
   border: solid $tertiary-color 4px;
-  margin-right: 20px;
+  margin-right: 0;
   transition: transform 0.3s ease;
+
   &:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 0px rgba(0, 0, 0, 0.5);
@@ -62,4 +63,20 @@
 .skill img {
   object-fit: contain;
   width: 60%;
+}
+
+@media (max-width: 520px) {
+  .categories {
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+
+    span h3 {
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+    }
+  }
+
+  .skills-cont {
+    grid-template-columns: repeat(auto-fit, minmax(5.2rem, 1fr));
+  }
 }

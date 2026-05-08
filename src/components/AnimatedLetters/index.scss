@@ -2,23 +2,29 @@
 .text-animate {
   display: inline-block;
   opacity: 0;
-  animation-name: bounceIn;
-  animation-duration: 1s;
-  animation-delay: 1s;
-  animation-fill-mode: forwards;
+  animation-name: letterScaleIn;
+  animation-duration: 0.74s;
+  animation-delay: 0.18s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.2, 0.9, 0.22, 1.22);
   min-width: 10px;
+  transform-origin: center bottom;
   cursor: default;
 }
 
 .text-animate-hover {
   display: inline-block;
   min-width: 10px;
+  opacity: 1;
   animation-fill-mode: both;
   animation-iteration-count: 1;
+  transform-origin: center bottom;
+  transition: color 180ms ease;
 
-  &:hover {
-    animation-name: rubberBand;
-    animation-duration: 1s;
+  &.is-hovering {
+    animation-name: letterHoverScale;
+    animation-duration: 0.48s;
+    animation-timing-function: ease-out;
     cursor: default;
     color: $background-color;
   }
@@ -26,6 +32,42 @@
 
 @for $i from 1 through 50 {
   .text-animate._#{$i} {
-    animation-delay: #{$i / 10}s;
+    animation-delay: #{0.08s + $i * 0.055s};
+  }
+}
+
+@keyframes letterScaleIn {
+  0% {
+    opacity: 0;
+    transform: translateY(0.42em) scale(0.18);
+  }
+
+  58% {
+    opacity: 1;
+    transform: translateY(-0.08em) scale(1.18);
+  }
+
+  78% {
+    transform: translateY(0.03em) scale(0.96);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes letterHoverScale {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+
+  35% {
+    transform: translateY(-0.08em) rotate(-4deg) scale(1.22);
+  }
+
+  70% {
+    transform: translateY(0.02em) rotate(3deg) scale(0.96);
   }
 }

@@ -1,35 +1,31 @@
 @import "../../../App.scss";
 .logo-container {
-  position: absolute;
-  right: 22.5%;
-  top: 3%;
-  width: 400px;
-  height: 600px;
+  aspect-ratio: 300 / 550;
+  max-height: 100%;
   opacity: 0;
-  svg {
-    width: 350px;
-    transform: rotateZ(15deg) !important;
-    left: 0px;
-    position: absolute;
-    top: -10px;
-    z-index: 5;
-  }
-  .solid-logo {
-    width: 350px;
-    opacity: 0;
-    position: absolute;
-    transform: rotateZ(15deg);
-    left: 0;
-    top: 35px;
-
-    z-index: 5;
-  }
+  position: relative;
+  width: clamp(22rem, 22vw, 48rem);
   z-index: 5;
-  &:hover {
-    .flat-button {
-      transform: scale(1.1);
-      transition: transform 0.3s ease; // Smooth transition
-    }
+
+  .solid-logo,
+  svg {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: rotateZ(15deg) !important;
+    transform-origin: center;
+    width: 100%;
+  }
+
+  svg {
+    z-index: 5;
+  }
+
+  .solid-logo {
+    opacity: 0;
+    object-fit: contain;
+    z-index: 5;
   }
 }
 
@@ -38,20 +34,15 @@
   stroke: #6d3d2a;
   stroke-width: 20px;
 }
-.flat-button {
-  color: #fff;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  font-family: "Cheese";
-  text-decoration: none;
-  padding: 20px 22px;
-  background-color: $tertiary-color;
-  margin-top: 10px;
-  animation: fadeInAnimation 1s 1.8s backwards;
-  border-radius: 12px;
-  white-space: nowrap;
-  position: absolute;
-  bottom: 0px;
-  right: 120px;
+@media (max-width: 900px) {
+  .logo-container {
+    transform: translateY(-1rem);
+    width: clamp(16rem, 46vw, 28rem);
+  }
+}
+
+@media (max-width: 520px) {
+  .logo-container {
+    width: clamp(12.5rem, 50vw, 18rem);
+  }
 }

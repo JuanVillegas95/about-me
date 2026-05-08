@@ -1,76 +1,120 @@
 .app {
-  height: 100vh;
-  padding: 0;
+  height: 100dvh;
   margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
 .main-content {
   display: flex;
-  height: calc(100vh - 76px);
+  min-height: 0;
 }
+
 h1 {
-  font: normal 7.4rem/0rem "Cheese", sans-serif;
+  font: normal clamp(3.8rem, 5.2vw, 11rem) / 0.95 "Cheese", sans-serif;
+  letter-spacing: 0;
+  margin: 0;
   text-overflow: clip;
   color: white;
   text-wrap: nowrap;
 }
+
 p {
-  font-size: 18px;
+  font-size: clamp(1.7rem, 1vw, 2.2rem);
   font-family: "Nunito";
-  line-height: 28px;
+  line-height: 1.55;
   color: white;
+  max-width: min(64ch, calc(100vw - 4rem));
+  width: 100%;
 }
 
 .home-page {
-  display: flex;
+  align-items: center;
+  display: grid;
+  gap: clamp(2.4rem, 5vw, 8rem);
+  grid-template-columns: minmax(0, 1fr) minmax(28rem, 0.9fr);
+  min-height: 100dvh;
+  padding: clamp(2.4rem, 4vw, 7rem) clamp(2rem, 5vw, 8rem);
   width: 100%;
-  height: 100%;
-  flex-wrap: wrap;
-  overflow-y: scroll;
+
   .all-zone {
+    align-items: center;
     display: flex;
-    width: 100%;
+    grid-column: 1 / -1;
     height: 100%;
     justify-content: center;
-    align-items: center;
-    transform: translateY(-5%);
+    min-height: min(72rem, calc(100dvh - 12rem));
+    min-width: 0;
+    width: 100%;
   }
+
   .text-zone {
-    width: 55%;
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
+    gap: clamp(0.4rem, 1vw, 1rem);
     justify-content: center;
-    align-items: start;
-    padding: 20px;
+    max-width: calc(100vw - 4rem);
+    min-width: 0;
+    padding: 0;
     position: relative;
-    //This first
-    @media (max-width: 992px) {
-      h1 {
-        font-size: 5.5rem;
-      }
-    }
-    @media (max-width: 768px) {
-      width: 100%;
-      height: auto;
-      min-height: 50vh;
-      h1 {
-        font-size: 5rem;
-      }
-    }
+    width: auto;
   }
 
   .visual-zone {
-    width: 45%;
-    height: 100%;
-    position: relative;
-    display: flex;
     align-items: center;
+    display: flex;
+    height: auto;
     justify-content: center;
-    padding-right: 10rem;
-    @media (max-width: 768px) {
+    min-height: clamp(30rem, 70vh, 70rem);
+    min-width: 0;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    width: auto;
+  }
+
+  @media (max-width: 900px) {
+    align-content: start;
+    grid-template-columns: 1fr;
+
+    .text-zone {
       width: 100%;
-      height: 50vh; // Adjust as needed
     }
+
+    .visual-zone {
+      min-height: clamp(20rem, 42vh, 34rem);
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 520px) {
+    gap: clamp(1.6rem, 5vw, 2.8rem);
+    padding: clamp(1.8rem, 5vw, 3.2rem) clamp(1.4rem, 4vw, 2.2rem);
+
+    h1 {
+      font-size: clamp(3.2rem, 11vw, 4.8rem);
+    }
+
+    p {
+      font-size: 1.55rem;
+      line-height: 2.45rem;
+      overflow-wrap: break-word;
+      width: 100%;
+    }
+  }
+}
+
+.single-page {
+  .hero-section {
+    padding-top: clamp(2.4rem, 4vw, 7rem);
+  }
+
+  .about-page {
+    align-items: center;
+    padding-top: clamp(4rem, 7vw, 10rem);
   }
 }
 

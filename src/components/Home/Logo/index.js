@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from "react"
 import homeMonkeSolid from "../../../assets/images/home-monke.png"
 import { gsap } from "gsap-trial"
 import { DrawSVGPlugin } from "gsap-trial/DrawSVGPlugin"
-import { Link } from "react-router-dom"
 
 export const Logo = () => {
   const bgRef = useRef(null)
@@ -15,14 +14,14 @@ export const Logo = () => {
 
     gsap
       .timeline()
-      .to(bgRef.current, { duration: 1, opacity: 1 }) // First animation
+      .to(bgRef.current, { duration: 0.4, opacity: 1 })
       .fromTo(
         outlineLogoRef.current,
         { drawSVG: "0%" },
-        { duration: 10, drawSVG: "15%", ease: "power3.out" } // Slow start
+        { duration: 1.4, drawSVG: "15%", ease: "power3.out" }
       )
       .to(outlineLogoRef.current, {
-        duration: 5,
+        duration: 1.2,
         drawSVG: "100%",
       })
 
@@ -33,8 +32,8 @@ export const Logo = () => {
       },
       {
         opacity: 1,
-        delay: 4,
-        duration: 4,
+        delay: 0.8,
+        duration: 1.2,
       }
     )
   }, [])
@@ -67,9 +66,6 @@ export const Logo = () => {
           />
         </g>
       </svg>
-      <Link to="/contact" className="flat-button">
-        Contact me
-      </Link>
     </div>
   )
 }

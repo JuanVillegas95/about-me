@@ -1,10 +1,12 @@
 .about-cont {
+  height: clamp(42rem, 72vh, 82rem);
+  margin: auto;
+  max-width: 100%;
+  overflow: visible;
+  position: relative;
   will-change: transform, opacity;
   transform: translateZ(0);
-  width: 100%;
-  position: absolute;
-  overflow: hidden;
-  height: 100%;
+  width: min(100%, 94rem);
 
   $delay-step: 0.2s;
 
@@ -23,28 +25,58 @@
 
   .card {
     border: 8px solid white;
+    height: auto;
     position: absolute;
+
     &:nth-child(1) {
-      width: 200px;
+      width: clamp(16rem, 13vw, 28rem);
     }
+
     &:nth-child(2) {
-      width: 200px;
+      width: clamp(16rem, 13vw, 28rem);
     }
   }
 
   .contour {
     filter: drop-shadow(5px 0 white) drop-shadow(-5px 0 white)
       drop-shadow(0 5px white) drop-shadow(0 -5px white);
+    height: auto;
+    max-width: 100%;
     position: absolute;
 
     &:nth-child(3) {
-      width: 650px;
+      width: clamp(38rem, 31vw, 72rem);
     }
+
     &:nth-child(4) {
-      width: 250px;
+      width: clamp(18rem, 15vw, 32rem);
     }
+
     &:nth-child(5) {
-      width: 225px;
+      width: clamp(18rem, 14vw, 30rem);
+    }
+  }
+
+  @media (max-width: 900px) {
+    height: clamp(24rem, 45vh, 38rem);
+    width: min(100%, 48rem);
+
+    .card {
+      &:nth-child(1),
+      &:nth-child(2) {
+        width: clamp(8rem, 24vw, 13rem);
+      }
+    }
+
+    .contour {
+      &:nth-child(3) {
+        width: clamp(24rem, 68vw, 42rem);
+      }
+
+      &:nth-child(4),
+      &:nth-child(5) {
+        width: clamp(10rem, 28vw, 15rem);
+      }
     }
   }
 }

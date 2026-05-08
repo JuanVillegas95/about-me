@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 
 // import Loader from 'react-loaders'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./index.scss"
 import React from "react"
 import { AnimatedLetters } from "../AnimatedLetters"
@@ -22,14 +21,8 @@ export const About = () => {
 
   return (
     <>
-      <div className="home-page">
+      <section className="home-page about-page">
         <div className="text-zone">
-          {/* <img
-            onClick={handleIsMonkeAnimate}
-            className={`imgs home-monke ${isMonkeAnimate ? 'animate' : ''}`}
-            src={homeMonke}
-            alt="monke"
-          /> */}
           <h1 style={{ marginBottom: 0 }}>
             <AnimatedLetters
               letterClass={letterClass}
@@ -38,22 +31,27 @@ export const About = () => {
             />
           </h1>
           <p>
-            I'm a software engineer who thrives on hands-on
-            problem-solving—whether I'm building circuits, writing clean code,
-            or prototyping new ideas.
+            Hey, I'm Juan Villegas — a 24-year-old software engineer from
+            Mexico, currently building things at Oracle. I studied Computer
+            Science and never really stopped studying since; picking up new
+            stuff on a near-daily basis is just how I'm wired.
           </p>
           <p>
-            I live for those 'aha!' moments when stubborn problems finally
-            crack—where failed prototypes become stepping stones and
-            coffee-fueled debugging sessions turn into elegant solutions
+            Most of my work lives in full-stack territory, but honestly, I'll
+            dive into pretty much anything that grabs my attention. Code is the
+            main thing, but human languages are a close second — I speak Spanish
+            and English, and I'm slowly making friends with Japanese and French.
           </p>
           <p>
-            Outside of coding, I'm into learning languages, playing rhythm games
-            and exploring new cultures—something I’ve kept doing since meeting
-            my partner during an exchange in South Korea. I’m a curious person
-            at heart. I genuinely enjoy learning and digging deep into topics
-            that catch my interest, especially in areas like computational
-            graphics, which I'd love to study more seriously someday.
+            When I'm away from the keyboard, I'm probably training Muay Thai,
+            doing calisthenics, or planning the next trip. South Korea, Japan,
+            France, and the Netherlands have been favorites so far — and the
+            Netherlands might turn into more than a stamp in my passport: I'm
+            aiming to start a master's there in 2027 (the fact that my
+            girlfriend is Dutch may or may not have something to do with that).
+          </p>
+          <p>
+            Always curious, always learning.
           </p>
         </div>
         <div className="visual-zone">
@@ -62,54 +60,59 @@ export const About = () => {
               src={korea}
               className="imgs card"
               loading="eager"
+              alt="Juan in Korea"
               style={{
                 "--rotate": "-8deg",
-                "--translateX": "135px",
-                "--translateY": "40px",
+                "--translateX": "clamp(40px, 10vw, 180px)",
+                "--translateY": "clamp(0px, 3vw, 50px)",
               }}
             />
             <img
               src={holland}
               className="imgs card"
               loading="eager"
+              alt="Juan in Holland"
               style={{
                 "--rotate": "8deg",
-                "--translateX": "65px",
-                "--translateY": "180px",
+                "--translateX": "clamp(0px, 5vw, 80px)",
+                "--translateY": "clamp(120px, 16vw, 220px)",
               }}
             />
             <img
               src={me}
               className="imgs contour"
               loading="eager"
+              alt="Juan"
               style={{
                 "--rotate": "8deg",
-                "--translateX": "20px",
-                "--translateY": "-80px",
+                "--translateX": "clamp(50px, 8vw, 120px)",
+                "--translateY": "clamp(-80px, -4vw, -40px)",
               }}
             />
             <img
               src={pulga}
               className="imgs contour"
               loading="eager"
+              alt="Pulga"
               style={{
-                "--translateX": "200px",
-                "--translateY": "400px",
+                "--translateX": "clamp(140px, 20vw, 280px)",
+                "--translateY": "clamp(240px, 34vw, 440px)",
               }}
             />
             <img
               src={roki}
               className="imgs contour"
               loading="eager"
+              alt="Roki"
               style={{
                 "--rotate": "-5deg",
-                "--translateX": "80px",
-                "--translateY": "280px",
+                "--translateX": "clamp(20px, 6vw, 90px)",
+                "--translateY": "clamp(260px, 31vw, 380px)",
               }}
             />
           </div>
         </div>
-      </div>
+      </section>
       {/* <Loader type="pacman" /> */}
     </>
   )
