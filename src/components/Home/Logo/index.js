@@ -1,8 +1,8 @@
 import "./index.scss"
 import React, { useEffect, useRef } from "react"
 import homeMonkeSolid from "../../../assets/images/home-monke.png"
-import { gsap } from "gsap-trial"
-import { DrawSVGPlugin } from "gsap-trial/DrawSVGPlugin"
+import { gsap } from "gsap"
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin"
 
 export const Logo = () => {
   const bgRef = useRef(null)
